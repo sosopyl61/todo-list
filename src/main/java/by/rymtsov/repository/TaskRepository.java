@@ -1,4 +1,4 @@
-package repository;
+package by.rymtsov.repository;
 
 import java.util.HashMap;
 import java.util.HashSet;
