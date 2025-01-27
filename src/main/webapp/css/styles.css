@@ -1,0 +1,129 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#login-form, #registration-form {
+    background-color: white;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    border-radius: 15px;
+    width: 300px;
+}
+
+label {
+    display: block;
+    margin: 5px 0;
+}
+
+input {
+    width: 100%;
+    height: 40px;
+    border: 1px solid;
+    border-radius: 4px;
+}
+
+#button-login, #button-register, #button-to-register, #button-to-login {
+    margin-top: 15px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    width: 100%;
+    font-size: 16px;
+}
+
+#button-login, #button-register, #button-about-me {
+    background-color: #5cb85c;
+}
+
+#button-to-register, #button-to-login {
+    background-color: #5cb8aa;
+}
+
+#logout-button {
+    background-color: #ff0202;
+}
+
+#delete-button {
+    background-color: #ff0202;
+    border: none;
+    color: white;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+#button-login:hover, #button-register:hover, #button-about-me:hover {
+    background-color: #419541;
+}
+
+#button-to-register:hover, #button-to-login:hover {
+    background-color: #489186;
+}
+
+#logout-button:hover, #delete-button:hover {
+    background-color: #a20000;
+}
+
+.header-buttons {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.header-buttons form {
+    display: inline;
+}
+
+#about-me-id {
+    margin-top: 100px;
+}
+
+#profile-photo {
+    max-width: 70%;
+    border-radius: 50%;
+}
+
+#about-me-text-id {
+    display: flex;
+    align-items: center;
+}
+
+.header-buttons button {
+    padding: 10px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+input[type="text"]{
+    margin-bottom: 10px;
+}
+
+#task-btn{
+    padding: 10px;
+    width: 100%;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    background-color: #5cb85c;
+}
+
+li {
+    display: flex;
+    align-items: center;
+}
+
+#task-text {
+    flex-grow: 1;
+}
