@@ -1,5 +1,6 @@
 package by.rymtsov.servlet;
 
+import by.rymtsov.log.CustomLogger;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -11,7 +12,12 @@ import java.io.IOException;
 @WebServlet("/about-me")
 public class AboutMeServlet extends HttpServlet {
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getRequestDispatcher("/page/about-me.html").forward(req, resp);
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) {
+        CustomLogger.info("Servlet about me is working.");
+        try {
+            req.getRequestDispatcher("/page/about-me.html").forward(req, resp);
+        } catch (ServletException | IOException e) {
+            CustomLogger.error(e.getMessage());
+        }
     }
 }

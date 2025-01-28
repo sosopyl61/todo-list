@@ -1,5 +1,6 @@
 package by.rymtsov.servlet;
 
+import by.rymtsov.log.CustomLogger;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -21,18 +22,24 @@ public class TodoListServlet extends HttpServlet {
     }
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) {
+        CustomLogger.info("Todo list servlet is working.");
         String username = (String) req.getSession().getAttribute("username");
         req.setAttribute("username", username);
 
         Set<String> tasks = taskRepository.getTasksByUsername(username);
 
         req.setAttribute("tasks", tasks);
-        req.getRequestDispatcher("/page/todo-list.jsp").forward(req, resp);
+        try {
+            req.getRequestDispatcher("/page/todo-list.jsp").forward(req, resp);
+        } catch (ServletException | IOException e) {
+            CustomLogger.error(e.getMessage());
+        }
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) {
+        CustomLogger.info("Todo list servlet is working.");
         String task = req.getParameter("task");
         String deletedTask = req.getParameter("deletedTask");
 
@@ -41,18 +48,21 @@ public class TodoListServlet extends HttpServlet {
 
         Set<String> tasks = taskRepository.getTasksByUsername(username);
 
-        if (tasks != null) {
+        if (task != null && !task.isEmpty()) {
             tasks.add(task);
-            taskRepository.getTaskList().put(username, tasks);
-        }
-
-        if (deletedTask != null) {
+            CustomLogger.info("Task added: " + task);
+        } else if (deletedTask != null && !deletedTask.isEmpty()) {
             tasks.remove(deletedTask);
-            taskRepository.getTaskList().put(username, tasks);
+            CustomLogger.info("Task deleted: " + deletedTask);
         }
+        taskRepository.getTaskList().put(username, tasks);
 
         req.getSession().setAttribute("tasks", tasks);
 
-        req.getRequestDispatcher("/page/todo-list.jsp").forward(req, resp);
+        try {
+            req.getRequestDispatcher("/page/todo-list.jsp").forward(req, resp);
+        } catch (ServletException | IOException e) {
+            CustomLogger.error(e.getMessage());
+        }
     }
 }

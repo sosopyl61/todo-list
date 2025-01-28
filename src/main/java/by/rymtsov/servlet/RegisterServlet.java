@@ -1,5 +1,6 @@
 package by.rymtsov.servlet;
 
+import by.rymtsov.log.CustomLogger;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -13,8 +14,10 @@ import java.io.IOException;
 @WebServlet("/registration")
 public class RegisterServlet extends HttpServlet {
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) {
         resp.setContentType("text/html;charset=UTF-8");
+
+        CustomLogger.info("Registration servlet is working.");
 
         String username = req.getParameter("username");
         String password = req.getParameter("password");
@@ -22,13 +25,16 @@ public class RegisterServlet extends HttpServlet {
 
         boolean isUserAdded = UserRepository.addUser(username, password);
 
-
-        if (isUserAdded && confirmPassword.equals(password)) {
-            HttpSession session = req.getSession();
-            session.setAttribute("username", username);
-            req.getRequestDispatcher("/login.html").forward(req, resp);
-        } else {
-            req.getRequestDispatcher("/registration.html").forward(req, resp);
+        try {
+            if (isUserAdded && confirmPassword.equals(password)) {
+                HttpSession session = req.getSession();
+                session.setAttribute("username", username);
+                req.getRequestDispatcher("/login.html").forward(req, resp);
+            } else {
+                req.getRequestDispatcher("/registration.html").forward(req, resp);
+            }
+        } catch (ServletException | IOException e) {
+            CustomLogger.error(e.getMessage());
         }
     }
 }

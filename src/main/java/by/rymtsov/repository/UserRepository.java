@@ -1,5 +1,7 @@
 package by.rymtsov.repository;
 
+import by.rymtsov.log.CustomLogger;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -13,10 +15,12 @@ public class UserRepository {
 
     public static Boolean isValid(String username, String password) {
         if (username == null || password == null) {
+            CustomLogger.info("Invalid username or password.");
             return false;
         }
 
         if (users.containsKey(username)) {
+            CustomLogger.info("Validating user " + username);
             return users.get(username).equals(password);
         }
         return false;
@@ -27,6 +31,7 @@ public class UserRepository {
             return false;
         } else {
             users.put(username, password);
+            CustomLogger.info("Adding user " + username);
             return true;
         }
     }

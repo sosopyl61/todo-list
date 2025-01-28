@@ -1,0 +1,47 @@
+2025-01-28 13:46:52 [INFO] Registration servlet is working.
+2025-01-28 13:46:52 [INFO] Adding user 123
+2025-01-28 13:46:54 [INFO] Login servlet is working.
+2025-01-28 13:46:54 [INFO] Validating user 123
+2025-01-28 13:46:54 [INFO] Todo list servlet is working.
+2025-01-28 13:46:54 [INFO] Getting tasks by username: 123
+2025-01-28 13:47:07 [INFO] Todo list servlet is working.
+2025-01-28 13:47:07 [INFO] Getting tasks by username: 123
+2025-01-28 13:47:07 [INFO] Todo list servlet is working.
+2025-01-28 13:47:07 [INFO] Getting tasks by username: 123
+2025-01-28 13:51:15 [INFO] Login servlet is working.
+2025-01-28 13:51:15 [INFO] Validating user admin
+2025-01-28 13:51:15 [INFO] Todo list servlet is working.
+2025-01-28 13:51:15 [INFO] Getting tasks by username: admin
+2025-01-28 13:51:18 [INFO] Todo list servlet is working.
+2025-01-28 13:51:18 [INFO] Getting tasks by username: admin
+2025-01-28 13:51:18 [INFO] Task added: 123
+2025-01-28 13:51:19 [INFO] Todo list servlet is working.
+2025-01-28 13:51:19 [INFO] Getting tasks by username: admin
+2025-01-28 13:51:19 [INFO] Task added: 2131231231
+2025-01-28 13:51:20 [INFO] Todo list servlet is working.
+2025-01-28 13:51:20 [INFO] Getting tasks by username: admin
+2025-01-28 13:51:20 [INFO] Task deleted: 123
+2025-01-28 13:51:21 [INFO] Todo list servlet is working.
+2025-01-28 13:51:21 [INFO] Getting tasks by username: admin
+2025-01-28 13:51:21 [INFO] Task deleted: 2131231231
+2025-01-28 13:51:25 [INFO] Todo list servlet is working.
+2025-01-28 13:51:25 [INFO] Getting tasks by username: admin
+2025-01-28 13:51:25 [INFO] Task added: 21312312312
+2025-01-28 13:51:27 [INFO] Todo list servlet is working.
+2025-01-28 13:51:27 [INFO] Getting tasks by username: admin
+2025-01-28 13:51:27 [INFO] Task added: 14`23`21`
+2025-01-28 13:51:29 [INFO] Servlet about me is working.
+2025-01-28 13:51:30 [INFO] Todo list servlet is working.
+2025-01-28 13:51:30 [INFO] Getting tasks by username: admin
+2025-01-28 13:51:31 [INFO] Logout servlet is working.
+2025-01-28 13:51:31 [INFO] Login servlet is working.
+2025-01-28 13:51:37 [INFO] Login servlet is working.
+2025-01-28 13:51:37 [INFO] Validating user user
+2025-01-28 13:51:37 [INFO] Todo list servlet is working.
+2025-01-28 13:51:37 [INFO] Getting tasks by username: user
+2025-01-28 13:51:38 [INFO] Todo list servlet is working.
+2025-01-28 13:51:38 [INFO] Getting tasks by username: user
+2025-01-28 13:51:38 [INFO] Task added: 1
+2025-01-28 13:51:39 [INFO] Todo list servlet is working.
+2025-01-28 13:51:39 [INFO] Getting tasks by username: user
+2025-01-28 13:51:39 [INFO] Task deleted: 1

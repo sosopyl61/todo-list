@@ -1,5 +1,7 @@
 package by.rymtsov.repository;
 
+import by.rymtsov.log.CustomLogger;
+
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -17,6 +19,7 @@ public class TaskRepository {
     }
 
     public Set<String> getTasksByUsername(String taskName) {
+        CustomLogger.info("Getting tasks by username: " + taskName);
         return taskList.get(taskName) == null ? new HashSet<>() : taskList.get(taskName);
     }
 }
