@@ -3,7 +3,7 @@
 <html>
 <head>
     <title>Todo list</title>
-    <link href="../css/styles.css" rel="stylesheet">
+    <link href="../../css/styles.css" rel="stylesheet">
 
     <style>
         <%@include file="/css/styles.css"%>
@@ -14,7 +14,7 @@
 <h1> Hello <%=request.getSession().getAttribute("username")%> !</h1>
 
 <div class="header-buttons">
-    <form action="about-me" method="GET">
+    <form action="about-me" method="POST">
         <button type="submit" id="button-about-me">About me</button>
     </form>
     <form action="logout" method="POST">

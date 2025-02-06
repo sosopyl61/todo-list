@@ -10,9 +10,16 @@ import jakarta.servlet.http.HttpSession;
 import by.rymtsov.repository.UserRepository;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
+    UserRepository userRepository;
+
+    public LoginServlet() {
+        this.userRepository = new UserRepository();
+    }
+
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) {
         resp.setContentType("text/html;charset=UTF-8");
@@ -22,7 +29,9 @@ public class LoginServlet extends HttpServlet {
         String username = req.getParameter("username");
         String password = req.getParameter("password");
 
-        boolean isUserValid = UserRepository.isValid(username, password);
+        boolean isUserValid = false;
+        isUserValid = userRepository.isValid(username, password);
+
         try {
             if (isUserValid) {
                 HttpSession session = req.getSession();
