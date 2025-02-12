@@ -7,9 +7,9 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DatabaseService {
-    final String URL = "jdbc:postgresql://localhost:5432/postgres";
-    final String DB_USER = "postgres";
-    final String DB_PASSWORD = "root";
+    final String URL = "jdbc:postgresql://localhost:5432/database-32";
+    final String DB_USER = "user32";
+    final String DB_PASSWORD = "qwerty";
 
     static {
         try {

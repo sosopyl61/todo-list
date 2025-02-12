@@ -31,7 +31,7 @@ public class TodoListServlet extends HttpServlet {
 
         req.setAttribute("tasks", tasks);
         try {
-            req.getRequestDispatcher("/page/todo-list.jsp").forward(req, resp);
+            req.getRequestDispatcher("/WEB-INF/page/todo-list.jsp").forward(req, resp);
         } catch (ServletException | IOException e) {
             CustomLogger.error(e.getMessage());
         }
@@ -60,7 +60,7 @@ public class TodoListServlet extends HttpServlet {
         req.getSession().setAttribute("tasks", tasks);
 
         try {
-            req.getRequestDispatcher("/page/todo-list.jsp").forward(req, resp);
+            req.getRequestDispatcher("/WEB-INF/page/todo-list.jsp").forward(req, resp);
         } catch (ServletException | IOException e) {
             CustomLogger.error(e.getMessage());
         }

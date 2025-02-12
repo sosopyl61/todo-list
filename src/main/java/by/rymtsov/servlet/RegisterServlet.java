@@ -13,28 +13,26 @@ import java.io.IOException;
 
 @WebServlet("/registration")
 public class RegisterServlet extends HttpServlet {
+
+    UserRepository userRepository = new UserRepository();
+
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) {
         resp.setContentType("text/html;charset=UTF-8");
-
-        CustomLogger.info("Registration servlet is working.");
 
         String username = req.getParameter("username");
         String password = req.getParameter("password");
         String confirmPassword = req.getParameter("confirm-password");
 
-        boolean isUserAdded = UserRepository.addUser(username, password);
-
         try {
-            if (isUserAdded && confirmPassword.equals(password)) {
-                HttpSession session = req.getSession();
-                session.setAttribute("username", username);
-                req.getRequestDispatcher("/login.html").forward(req, resp);
+            if (userRepository.addUser(username, password)) {
+                resp.sendRedirect("/login.html");  // После успешной регистрации перенаправление на страницу входа
             } else {
-                req.getRequestDispatcher("/registration.html").forward(req, resp);
+                req.setAttribute("error", "Username already exists or invalid input.");
+                req.getRequestDispatcher("/register.html").forward(req, resp);
             }
         } catch (ServletException | IOException e) {
-            CustomLogger.error(e.getMessage());
+            CustomLogger.error("Error forwarding to register.html" + e.getMessage());
         }
     }
 }

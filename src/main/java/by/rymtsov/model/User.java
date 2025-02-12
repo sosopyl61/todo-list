@@ -4,10 +4,11 @@ import java.sql.Date;
 
 public class User {
     private long id;
-    private String username;
-    private String userPassword;
+    private String firstname;
+    private String secondname;
     private Date created;
     private Date changed;
+    private int age;
 
     public long getId() {
         return id;
@@ -17,20 +18,20 @@ public class User {
         this.id = id;
     }
 
-    public String getUsername() {
-        return username;
+    public String getFirstname() {
+        return firstname;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
     }
 
-    public String getUserPassword() {
-        return userPassword;
+    public String getSecondname() {
+        return secondname;
     }
 
-    public void setUserPassword(String userPassword) {
-        this.userPassword = userPassword;
+    public void setSecondname(String secondname) {
+        this.secondname = secondname;
     }
 
     public Date getCreated() {
@@ -49,14 +50,23 @@ public class User {
         this.changed = changed;
     }
 
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
     @Override
     public String toString() {
         return "User{" +
                 "id=" + id +
-                ", username='" + username + '\'' +
-                ", userPassword='" + userPassword + '\'' +
+                ", firstname='" + firstname + '\'' +
+                ", secondname='" + secondname + '\'' +
                 ", created=" + created +
                 ", changed=" + changed +
+                ", age=" + age +
                 '}';
     }
 }
