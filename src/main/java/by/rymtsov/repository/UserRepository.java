@@ -3,7 +3,13 @@ package by.rymtsov.repository;
 import by.rymtsov.log.CustomLogger;
 import by.rymtsov.model.User;
 
-import java.sql.*;
+
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -30,58 +36,27 @@ public class UserRepository {
     }
 
     public Boolean isValid(String username, String password) {
-        User userFromDatabase = null;
         try (Connection connection = databaseService.getConnection()) {
             PreparedStatement statement = connection.prepareStatement(SQLQuery.IS_VALID);
-
             statement.setString(1, username);
             statement.setString(2, password);
-            ResultSet result = statement.executeQuery();
 
-            while (result.next()) {
-                userFromDatabase = parseUser(result);
-            }
+            ResultSet result = statement.executeQuery();
+            return result.next();
         } catch (SQLException e) {
             CustomLogger.error(e.getMessage());
         }
-
-        /*if (userFromDatabase == null || userFromDatabase.getUsername() == null || userFromDatabase.getUserPassword() == null) {
-            return false;
-        }
-        if (userFromDatabase.getUsername().equals(username)) {
-            return userFromDatabase.getUserPassword().equals(password);
-        }*/
         return false;
     }
 
-    public Boolean isContainsUserByUsername(String username) {
-        Set<User> allUsers = getAllUsers();
-        for (User user : allUsers) {
-            /*if (user.getUsername().equals(username)) {
-                return true;
-            }*/
-        }
-        return false;
-    }
-
-    public boolean addUser(String username, String password) {
-        if (username == null || password == null || isContainsUserByUsername(username)) {
-            return false;
-        }
-
-        try (Connection connection = databaseService.getConnection();
-            PreparedStatement statement = connection.prepareStatement(SQLQuery.INSERT_USER)) {
-
-            statement.setString(1, username);
-            statement.setString(2, password);
-            int rowInserted = statement.executeUpdate();
-
-            if (rowInserted > 0) {
-                CustomLogger.info("User " + username + " added successfully.");
-                return true;
-            }
+    public Boolean isContainsUserByUsername(String login) {
+        try (Connection connection = databaseService.getConnection()) {
+            PreparedStatement statement = connection.prepareStatement(SQLQuery.GET_SECURITY_BY_LOGIN);
+            statement.setString(1, login);
+            ResultSet result = statement.executeQuery();
+            return result.next();
         } catch (SQLException e) {
-            CustomLogger.error("Error adding user: " + e.getMessage());
+            CustomLogger.error(e.getMessage());
         }
         return false;
     }
